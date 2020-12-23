@@ -6,12 +6,30 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0,
-          0
+          11.87911166663889,
+          43.46601166663889
         ]
       },
       "properties": {
         "numi": 1,
+        "DateTimeOriginal": "2008:10:22 16:55:37",
+        "Make": "NIKON",
+        "Model": "COOLPIX P6000",
+        "DateTime": "2008:11:01 21:15:11",
+        "filename": "data/DSCN0040.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -26.729999999999997,
+          82.15583333333333
+        ]
+      },
+      "properties": {
+        "numi": 2,
         "DateTimeOriginal": "2020:03:04 07:28:13",
         "Make": "DJI",
         "Model": "FC2103",
@@ -24,12 +42,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0,
-          0
+          -180.0,
+          90.0
         ]
       },
       "properties": {
-        "numi": 2,
+        "numi": 3,
         "DateTimeOriginal": "2020:03:05 11:54:49",
         "Make": "Canon",
         "DateTime": "2020:03:05 11:54:49",
@@ -47,7 +65,7 @@
         ]
       },
       "properties": {
-        "numi": 3,
+        "numi": 4,
         "DateTimeOriginal": "2020:03:05 21:07:50",
         "Model": "Canon PowerShot SD1100 IS",
         "Make": "Canon",
@@ -60,12 +78,12 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          0,
-          0
+          -29.975277777777777,
+          82.15944444444445
         ]
       },
       "properties": {
-        "numi": 4,
+        "numi": 5,
         "DateTimeOriginal": "2020:03:06 17:13:32",
         "Make": "DJI",
         "Model": "FC2103",

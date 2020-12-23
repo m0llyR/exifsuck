@@ -5,6 +5,8 @@ from PIL import Image, ExifTags
 
 import exif2geojson
 
+# ToDo: Various combinations of (0,0) or (90,-180) = Investigate...
+
 PATH = r"data/"
 EXT = ".jpg"
 TAGS = ["Make","Model","BodySerialNumber","DateTime","DateTimeOriginal","GPSInfo",]
@@ -28,7 +30,7 @@ for path, subdir, files in os.walk(PATH):
                     if key in ExifTags.TAGS:
                         pass  # print(f"{ffn}   {ExifTags.TAGS[key]}:{repr(val)}")
                         if ExifTags.TAGS[key] in TAGS or ExifTags.TAGS[key].upper().startswith("GPS"):
-                            print(f"{ffn}   {ExifTags.TAGS[key]}: {repr(val)}")  # Just for shows, move to log file XXX
+                            # print(f"{ffn}   {ExifTags.TAGS[key]}: {repr(val)}")  # Just for shows, move to log file XXX
                             # print(f"{ffn}   {ExifTags.TAGS[key]}: {str(type(val))} {repr(val)}")  # Just for shows, move to log file XXX
                             dic_fc = exif2geojson.add_tag((ExifTags.TAGS[key], val), dic_fc, num_img)
                         else:
