@@ -32,7 +32,7 @@ def _validate_or_make_feature(dic_fc, num_img):
     num_il = -999  # number in list initialise
     if isinstance(dic_fc, dict):
         if isinstance(num_img, int):
-            print(f" = dic_fc: {dic_fc}")
+            # print(f" = dic_fc: {dic_fc}")
             if "type" in dic_fc.keys() and dic_fc["type"] == "FeatureCollection":
                 if "features" in dic_fc.keys() and isinstance(dic_fc["features"], list):
                     num_feat = -1
@@ -66,7 +66,7 @@ def _validate_or_make_feature(dic_fc, num_img):
         print(f"ERR: in _val_or_make...() received non-dict as dict_fc")
         return dic_fc
     if num_il < 0:
-        new_feature = {"type": "Feature", "geometry": {"type": "Point", "coordinates": []}, "properties": {"numi": 0}}
+        new_feature = {"type": "Feature", "geometry": {"type": "Point", "coordinates": [0, 0]}, "properties": {"numi": 0}}
         new_feature["properties"]["numi"] = num_img
         dic_fc["features"].append(new_feature)
         num_il = len(dic_fc["features"]) - 1
@@ -97,14 +97,19 @@ def add_tag(tup_tag, dic_fc, num_f):
     if isinstance(tup_tag, tuple) and len(tup_tag) == 2:
         if isinstance(dic_fc, dict):
             if isinstance(num_f, int):
-                if tup_tag[0].lower() == "make":
-                    pass
-                elif tup_tag[0].lower() == "model":
-                    pass
+                if tup_tag[0].lower() == "make" \
+                        or tup_tag[0].lower() == "model":
+                    dic_fc = _add_att(tup_tag, dic_fc, num_f)
+                elif tup_tag[0].lower() == "filename":
+                    val = tup_tag[1].replace("\\", "/")  # Smooth the path
+                    tup_tag = (tup_tag[0], val)
+                    dic_fc = _add_att(tup_tag, dic_fc, num_f)
                 elif tup_tag[0].lower().startswith("datetime"):
                     dic_fc = _add_att(tup_tag, dic_fc, num_f)
                 elif tup_tag[0].lower().startswith("gps"):
                     print(" at : GPS")
+                else:
+                    print(f"Warning: unknown tag name NOT added: {tup_tag[0]}")
             else:
                 print(f"ERR: add_tag() received non-int as num_f")
         else:
@@ -112,3 +117,8 @@ def add_tag(tup_tag, dic_fc, num_f):
     else:
         print(f"ERR: add_tag() received non-tuple as tup_tag")
     return dic_fc
+
+
+def write_2_json_file(dic_fc, str_ffn):
+    with open(str_ffn, 'w') as fp:
+        json.dump(dic_fc, fp, indent=2)

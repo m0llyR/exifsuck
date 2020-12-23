@@ -35,5 +35,6 @@ for path, subdir, files in os.walk(PATH):
                             pass  # print(f"key: {ExifTags.TAGS[key]} not in {TAGS}")
                     else:
                         pass  # print(f"{ffn} % {ExifTags.TAGS[key]}:{repr(val)}")
+            dic_fc = exif2geojson.add_tag(("filename", ffn), dic_fc, num_img)
 
-print(f"fc: {str(type(dic_fc))}: {dic_fc}")
+exif2geojson.write_2_json_file(dic_fc, 'pics.json')

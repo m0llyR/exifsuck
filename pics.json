@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "numi": 1,
+        "DateTimeOriginal": "2020:03:04 07:28:13",
+        "Make": "DJI",
+        "Model": "FC2103",
+        "DateTime": "2020:03:04 07:28:13",
+        "filename": "data/15-04-2020/DJI_0762.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "numi": 2,
+        "DateTimeOriginal": "2020:03:05 11:54:49",
+        "Make": "Canon",
+        "DateTime": "2020:03:05 11:54:49",
+        "Model": "Canon PowerShot G9 X Mark II",
+        "filename": "data/15-04-2020/IMG_1401.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "numi": 3,
+        "DateTimeOriginal": "2020:03:05 21:07:50",
+        "Model": "Canon PowerShot SD1100 IS",
+        "Make": "Canon",
+        "DateTime": "2020:03:05 21:07:50",
+        "filename": "data/15-04-2020/IMG_4582.JPG"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "numi": 4,
+        "DateTimeOriginal": "2020:03:06 17:13:32",
+        "Make": "DJI",
+        "Model": "FC2103",
+        "DateTime": "2020:03:06 17:13:32",
+        "filename": "data/17-04-2020/DJI_0825.JPG"
+      }
+    }
+  ]
+}
