@@ -12,11 +12,25 @@
       },
       "properties": {
         "numi": 1,
-        "DateTimeOriginal": "2008:10:22 16:55:37",
+        "DateTimeOriginal": "2008-10-22T16:55:37",
         "Make": "NIKON",
         "Model": "COOLPIX P6000",
-        "DateTime": "2008:11:01 21:15:11",
+        "DateTime": "2008-11-01T21:15:11",
         "filename": "data/DSCN0040.jpg"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          0,
+          0
+        ]
+      },
+      "properties": {
+        "numi": 2,
+        "filename": "data/gi_cartography.jpg"
       }
     },
     {
@@ -29,11 +43,11 @@
         ]
       },
       "properties": {
-        "numi": 2,
-        "DateTimeOriginal": "2020:03:04 07:28:13",
+        "numi": 3,
+        "DateTimeOriginal": "2020-03-04T07:28:13",
         "Make": "DJI",
         "Model": "FC2103",
-        "DateTime": "2020:03:04 07:28:13",
+        "DateTime": "2020-03-04T07:28:13",
         "filename": "data/15-04-2020/DJI_0762.JPG"
       }
     },
@@ -42,15 +56,15 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -180.0,
-          90.0
+          -1.0,
+          -1.0
         ]
       },
       "properties": {
-        "numi": 3,
-        "DateTimeOriginal": "2020:03:05 11:54:49",
+        "numi": 4,
+        "DateTimeOriginal": "2020-03-05T11:54:49",
         "Make": "Canon",
-        "DateTime": "2020:03:05 11:54:49",
+        "DateTime": "2020-03-05T11:54:49",
         "Model": "Canon PowerShot G9 X Mark II",
         "filename": "data/15-04-2020/IMG_1401.JPG"
       }
@@ -65,11 +79,11 @@
         ]
       },
       "properties": {
-        "numi": 4,
-        "DateTimeOriginal": "2020:03:05 21:07:50",
+        "numi": 5,
+        "DateTimeOriginal": "2020-03-05T21:07:50",
         "Model": "Canon PowerShot SD1100 IS",
         "Make": "Canon",
-        "DateTime": "2020:03:05 21:07:50",
+        "DateTime": "2020-03-05T21:07:50",
         "filename": "data/15-04-2020/IMG_4582.JPG"
       }
     },
@@ -83,11 +97,11 @@
         ]
       },
       "properties": {
-        "numi": 5,
-        "DateTimeOriginal": "2020:03:06 17:13:32",
+        "numi": 6,
+        "DateTimeOriginal": "2020-03-06T17:13:32",
         "Make": "DJI",
         "Model": "FC2103",
-        "DateTime": "2020:03:06 17:13:32",
+        "DateTime": "2020-03-06T17:13:32",
         "filename": "data/17-04-2020/DJI_0825.JPG"
       }
     }

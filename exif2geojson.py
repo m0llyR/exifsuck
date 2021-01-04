@@ -1,26 +1,28 @@
 import json
+import datetime
+from dateutil import parser
 
-samp_feature_geojson = """
-{
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [125.6, 10.1]
-  },
-  "properties": {
-    "name": "Dinagat Islands"
-  }
-} """
+# samp_feature_geojson = """
+# {
+#   "type": "Feature",
+#   "geometry": {
+#     "type": "Point",
+#     "coordinates": [125.6, 10.1]
+#   },
+#   "properties": {
+#     "name": "Dinagat Islands"
+#   }
+# } """
 
 # empty_feature_geojson = {"type": "Feature", "geometry": {"type": "Point", "coordinates": []}, "properties": {"numi": 0}}
 
 def new_geojson():
-    str_empty_point_fc = """{
-                            "type": "FeatureCollection",
-                            "features": [
-                            { "type": "Feature", "properties": null, "geometry": {"type":"Point","coordinates":[]} }
-                            ]
-                            }"""
+    # str_empty_point_fc = """{
+    #                         "type": "FeatureCollection",
+    #                         "features": [
+    #                         { "type": "Feature", "properties": null, "geometry": {"type":"Point","coordinates":[]} }
+    #                         ]
+    #                         }"""
     str_empty_fc = '{"type": "FeatureCollection","features": []}'
     return json.loads(str_empty_fc)
 
@@ -87,7 +89,7 @@ def _add_att(tup_tag, dic_fc, num_img):
 
 
 def make_ne_dd(tup_geo):
-    tup_ret = (90.0, -180.0)
+    tup_ret = (-1.0, -1.0)
     # print(f" - geo raw: {str(type(tup_geo))} {tup_geo}")
     if isinstance(tup_geo, tuple) and len(tup_geo) == 2:  # This is what we expect to receive
         if tup_geo[0] == 'GPSInfo':
@@ -124,6 +126,23 @@ def make_ne_dd(tup_geo):
     return tup_ret
 
 
+def make_valid_datetime(tup_in):
+    str_dtt = tup_in[1]
+    try:
+        ddt_ret = datetime.datetime.strptime(str_dtt, '%Y:%m:%d %H:%M:%S')
+        # print(f"    Info : Hit on '%Y:%m:%d %H:%M:%S'; {str_dtt} > {ddt_ret}")
+        return (tup_in[0], ddt_ret.isoformat())
+    except:
+        print(f"Warning: Can't interpret datetime.datetime.strptime(): {str_dtt}")
+    try:
+        ddt_ret = parser.parse(str_dtt)
+        # print(f"    Info : Guessing: {str_dtt} > {ddt_ret}")
+        return (tup_in[0], ddt_ret.isoformat())
+    except parser._parser.ParserError:
+        print(f"Warning: Can't interpret: parser.parse(): {str_dtt}")
+    return tup_in
+
+
 def _add_geo(tup_geo, dic_fc, num_img):
     dic_fc, num_il = _validate_or_make_feature(dic_fc, num_img)
     tup_ne_dd = make_ne_dd(tup_geo)
@@ -148,6 +167,7 @@ def add_tag(tup_tag, dic_fc, num_f):
     if isinstance(tup_tag, tuple) and len(tup_tag) == 2:
         if isinstance(dic_fc, dict):
             if isinstance(num_f, int):
+                # print(f"\tadd tag: {tup_tag}")
                 if tup_tag[0].lower() == "make" \
                         or tup_tag[0].lower() == "model":
                     dic_fc = _add_att(tup_tag, dic_fc, num_f)
@@ -156,6 +176,7 @@ def add_tag(tup_tag, dic_fc, num_f):
                     tup_tag = (tup_tag[0], val)
                     dic_fc = _add_att(tup_tag, dic_fc, num_f)
                 elif tup_tag[0].lower().startswith("datetime"):
+                    tup_tag = make_valid_datetime(tup_tag)
                     dic_fc = _add_att(tup_tag, dic_fc, num_f)
                 elif tup_tag[0].lower().startswith("gps"):
                     dic_fc = _add_geo(tup_tag, dic_fc, num_f)
@@ -173,3 +194,4 @@ def add_tag(tup_tag, dic_fc, num_f):
 def write_2_json_file(dic_fc, str_ffn):
     with open(str_ffn, 'w') as fp:
         json.dump(dic_fc, fp, indent=2)
+    return str_ffn
